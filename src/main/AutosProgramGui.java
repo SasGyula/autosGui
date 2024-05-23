@@ -33,11 +33,11 @@ public class AutosProgramGui extends javax.swing.JFrame {
         uzemanyag = new javax.swing.ButtonGroup();
         megyDefekt = new javax.swing.JPanel();
         beindit = new javax.swing.JButton();
-        megy = new javax.swing.JButton();
         kerekcsere = new javax.swing.JButton();
         leallit = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         tankolas = new javax.swing.JButton();
+        esely = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -49,8 +49,6 @@ public class AutosProgramGui extends javax.swing.JFrame {
         defektL = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
-        txtEsely = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
         txtPotkerek = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         btnFelvitel = new javax.swing.JButton();
@@ -69,13 +67,6 @@ public class AutosProgramGui extends javax.swing.JFrame {
             }
         });
 
-        megy.setText("Megy");
-        megy.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                megyActionPerformed(evt);
-            }
-        });
-
         kerekcsere.setText("Kerékcsere");
         kerekcsere.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -90,7 +81,7 @@ public class AutosProgramGui extends javax.swing.JFrame {
             }
         });
 
-        jButton6.setText("Megy(defekt)");
+        jButton6.setText("Megy");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
@@ -104,6 +95,8 @@ public class AutosProgramGui extends javax.swing.JFrame {
             }
         });
 
+        esely.setText("Esély defektre");
+
         javax.swing.GroupLayout megyDefektLayout = new javax.swing.GroupLayout(megyDefekt);
         megyDefekt.setLayout(megyDefektLayout);
         megyDefektLayout.setHorizontalGroup(
@@ -115,8 +108,8 @@ public class AutosProgramGui extends javax.swing.JFrame {
                     .addComponent(leallit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(tankolas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(kerekcsere, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(megy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton6))
+                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(esely))
                 .addContainerGap())
         );
         megyDefektLayout.setVerticalGroup(
@@ -125,8 +118,8 @@ public class AutosProgramGui extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jButton6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(megy)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(esely, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(7, 7, 7)
                 .addComponent(beindit)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(leallit)
@@ -202,8 +195,6 @@ public class AutosProgramGui extends javax.swing.JFrame {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Új autó"));
 
-        jLabel5.setText("Esély a defektre");
-
         jLabel4.setText("Pótkerék");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -212,13 +203,9 @@ public class AutosProgramGui extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtPotkerek, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtEsely, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addComponent(txtPotkerek, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39))
         );
         jPanel5Layout.setVerticalGroup(
@@ -228,10 +215,6 @@ public class AutosProgramGui extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtPotkerek, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addGap(12, 12, 12)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtEsely, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
                 .addContainerGap())
         );
 
@@ -254,34 +237,32 @@ public class AutosProgramGui extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(chbUzemanyag)
-                            .addComponent(chbBeinditva))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(btnFelvitel)
-                                .addGap(0, 77, Short.MAX_VALUE))
-                            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                        .addContainerGap())))
+                            .addComponent(chbUzemanyag)
+                            .addComponent(chbBeinditva)
+                            .addComponent(btnFelvitel))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(chbUzemanyag)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(chbBeinditva)
-                .addGap(43, 43, 43)
-                .addComponent(btnFelvitel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnFelvitel)
+                .addContainerGap())
         );
 
-        cmbAutok.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--autók" }));
-        cmbAutok.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbAutokActionPerformed(evt);
+        cmbAutok.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Alap autó" }));
+        cmbAutok.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbAutokItemStateChanged(evt);
             }
         });
 
@@ -296,7 +277,7 @@ public class AutosProgramGui extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(cmbAutok, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 38, Short.MAX_VALUE))
+                        .addGap(0, 52, Short.MAX_VALUE))
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -353,28 +334,15 @@ public class AutosProgramGui extends javax.swing.JFrame {
         informaciok();
     }//GEN-LAST:event_kerekcsereActionPerformed
 
-    private void megyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_megyActionPerformed
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         if(autok[index].isDefekt()){
             JOptionPane.showMessageDialog(rootPane, "Defektes a kerék");
         } else if(!autok[index].isUzemanyag()){
                JOptionPane.showMessageDialog(rootPane, "Nincs üzemanyag");
         }else if(!autok[index].isBeinditva()){
                 JOptionPane.showMessageDialog(rootPane, "Nincs beindítva");
-        }
-        else{
-            autok[index].megy();
-            informaciok();
-        }
-        
-    }//GEN-LAST:event_megyActionPerformed
-
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        if(autok[index].isDefekt()){
-            JOptionPane.showMessageDialog(rootPane, "Defektes a kerék");
-        } else if(!autok[index].isUzemanyag()){
-               JOptionPane.showMessageDialog(rootPane, "Nincs üzemanyag");
         }else{
-            autok[index].megyEselyDefektre();
+            autok[index].megyEselyDefektre(Double.parseDouble(esely.getText()));
             informaciok();
         }
         
@@ -382,16 +350,17 @@ public class AutosProgramGui extends javax.swing.JFrame {
 
     private void btnFelvitelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFelvitelActionPerformed
     int potkerek = Integer.parseInt(txtPotkerek.getText());
-    //double esely = Double.valueOf(txtEsely.getText());
     boolean uzemanyag = chbUzemanyag.isSelected();
     boolean beinditva = chbBeinditva.isSelected();
-    autok[index] = new Auto(uzemanyag, beinditva, potkerek);
+    autok[cmbAutok.getItemCount()] = new Auto(uzemanyag, beinditva, potkerek);
     informaciok();
+    cmbAutok.addItem("Auto "+cmbAutok.getItemCount());
     }//GEN-LAST:event_btnFelvitelActionPerformed
 
-    private void cmbAutokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbAutokActionPerformed
+    private void cmbAutokItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbAutokItemStateChanged
     index = cmbAutok.getSelectedIndex();
-    }//GEN-LAST:event_cmbAutokActionPerformed
+    informaciok();
+    }//GEN-LAST:event_cmbAutokItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -436,23 +405,21 @@ public class AutosProgramGui extends javax.swing.JFrame {
     private javax.swing.JCheckBox chbUzemanyag;
     private javax.swing.JComboBox<String> cmbAutok;
     private javax.swing.JLabel defektL;
+    private javax.swing.JTextField esely;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JButton kerekcsere;
     private javax.swing.JButton leallit;
-    private javax.swing.JButton megy;
     private javax.swing.JPanel megyDefekt;
     private javax.swing.JLabel potkerekekL;
     private javax.swing.JButton tankolas;
-    private javax.swing.JTextField txtEsely;
     private javax.swing.JTextField txtPotkerek;
     private javax.swing.ButtonGroup uzemanyag;
     private javax.swing.JLabel uzemanyagL;

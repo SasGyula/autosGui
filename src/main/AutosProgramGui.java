@@ -5,84 +5,88 @@ import javax.swing.JOptionPane;
 import modell.Auto;
 
 public class AutosProgramGui extends javax.swing.JFrame {
-    Auto auto = new Auto();
+    Auto [] autok;
+    int index;
     public AutosProgramGui() {
+        autok = new Auto[5];
+        autok[0] = new Auto();
+        index = 0;
         initComponents();
         informaciok();
         
     }
 
     private void informaciok() {
-        String potkerekSzam =  String.valueOf(auto.getPotkerek());
-        String beinditva = auto.isBeinditva() ? "Be" : "Nincs";
-        String uzemanyag = auto.isUzemanyag() ? "Van" : "Nincs";
+        String potkerekSzam =  String.valueOf(autok[index].getPotkerek());
+        String beinditva = autok[index].isBeinditva() ? "Be" : "Nincs";
+        String uzemanyag = autok[index].isUzemanyag() ? "Van" : "Nincs";
+        String defekt = autok[index].isDefekt() ? "Van" : "Nincs";
         beinditL.setText(beinditva);
         potkerekekL.setText(potkerekSzam);
         uzemanyagL.setText(uzemanyag);
+        defektL.setText(defekt);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        beinditL = new javax.swing.JLabel();
-        uzemanyagL = new javax.swing.JLabel();
-        potkerekekL = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
+        uzemanyag = new javax.swing.ButtonGroup();
+        megyDefekt = new javax.swing.JPanel();
+        beindit = new javax.swing.JButton();
+        megy = new javax.swing.JButton();
+        kerekcsere = new javax.swing.JButton();
+        leallit = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        tankolas = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        uzemanyagL = new javax.swing.JLabel();
+        beinditL = new javax.swing.JLabel();
+        potkerekekL = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        defektL = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        txtEsely = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        txtPotkerek = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        btnFelvitel = new javax.swing.JButton();
+        chbUzemanyag = new javax.swing.JCheckBox();
+        chbBeinditva = new javax.swing.JCheckBox();
+        cmbAutok = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Beindít");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        megyDefekt.setBorder(javax.swing.BorderFactory.createTitledBorder("Funkciók"));
+
+        beindit.setText("Beindít");
+        beindit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                beinditActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Leállít");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        megy.setText("Megy");
+        megy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                megyActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Tankolás");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        kerekcsere.setText("Kerékcsere");
+        kerekcsere.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                kerekcsereActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Kerékcsere");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        leallit.setText("Leállít");
+        leallit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-
-        beinditL.setText("jLabel1");
-
-        uzemanyagL.setText("jLabel1");
-
-        potkerekekL.setText("jLabel1");
-
-        jLabel1.setText("Beinditva:");
-
-        jLabel2.setText("Üzemanyag:");
-
-        jLabel3.setText("Pótkerék:");
-
-        jButton5.setText("Megy");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                leallitActionPerformed(evt);
             }
         });
 
@@ -93,120 +97,301 @@ public class AutosProgramGui extends javax.swing.JFrame {
             }
         });
 
+        tankolas.setText("Tankolás");
+        tankolas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tankolasActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout megyDefektLayout = new javax.swing.GroupLayout(megyDefekt);
+        megyDefekt.setLayout(megyDefektLayout);
+        megyDefektLayout.setHorizontalGroup(
+            megyDefektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(megyDefektLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(megyDefektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(beindit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(leallit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(tankolas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(kerekcsere, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(megy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton6))
+                .addContainerGap())
+        );
+        megyDefektLayout.setVerticalGroup(
+            megyDefektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(megyDefektLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(megy)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(beindit)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(leallit)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tankolas)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(kerekcsere)
+                .addContainerGap())
+        );
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Információk"));
+
+        jLabel1.setText("Beinditva:");
+
+        jLabel3.setText("Pótkerék:");
+
+        jLabel2.setText("Üzemanyag:");
+
+        uzemanyagL.setText("1");
+
+        beinditL.setText("1");
+
+        potkerekekL.setText("1");
+
+        jLabel6.setText("Defekt");
+
+        defektL.setText("1");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(potkerekekL, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(uzemanyagL, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(defektL, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(beinditL)
+                        .addGap(0, 0, Short.MAX_VALUE))))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(beinditL))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(uzemanyagL)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(potkerekekL))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(defektL))
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
+
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Új autó"));
+
+        jLabel5.setText("Esély a defektre");
+
+        jLabel4.setText("Pótkerék");
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtPotkerek, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtEsely, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
+                .addGap(39, 39, 39))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtPotkerek, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addGap(12, 12, 12)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtEsely, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addContainerGap())
+        );
+
+        btnFelvitel.setText("Felvitel");
+        btnFelvitel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFelvitelActionPerformed(evt);
+            }
+        });
+
+        chbUzemanyag.setText("Üzemanyag");
+
+        chbBeinditva.setText("Beindítva");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(chbUzemanyag)
+                            .addComponent(chbBeinditva))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(btnFelvitel)
+                                .addGap(0, 77, Short.MAX_VALUE))
+                            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addContainerGap())))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(chbUzemanyag)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(chbBeinditva)
+                .addGap(43, 43, 43)
+                .addComponent(btnFelvitel))
+        );
+
+        cmbAutok.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--autók" }));
+        cmbAutok.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbAutokActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addComponent(megyDefekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(beinditL)
-                    .addComponent(uzemanyagL)
-                    .addComponent(potkerekekL))
-                .addGap(75, 75, 75))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(cmbAutok, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 38, Short.MAX_VALUE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(beinditL)
-                    .addComponent(jLabel1))
-                .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(uzemanyagL)
-                    .addComponent(jLabel2))
-                .addGap(17, 17, 17)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(potkerekekL)
-                    .addComponent(jLabel3))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(14, Short.MAX_VALUE)
-                .addComponent(jButton6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton4)
-                .addGap(18, 18, 18))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cmbAutok, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(megyDefekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if(!auto.isUzemanyag()){
-            JOptionPane.showMessageDialog(rootPane, "Nincs üzemanyag");
-        }
-        auto.setBeinditva(true);
+    private void beinditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_beinditActionPerformed
+        autok[index].setBeinditva(true);
         informaciok();
-    }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        auto.setBeinditva(false);
+    }//GEN-LAST:event_beinditActionPerformed
+
+    private void leallitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leallitActionPerformed
+        autok[index].setBeinditva(false);
         informaciok();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_leallitActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        if(auto.isBeinditva()){
+    private void tankolasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tankolasActionPerformed
+        if(autok[index].isBeinditva()){
             JOptionPane.showMessageDialog(rootPane, "A kocsi be van indítva!");
+        }else if(autok[index].isUzemanyag()){
+            JOptionPane.showMessageDialog(rootPane, "Tele a tank");
         }else{
-            auto.tankol();
+            autok[index].tankol();
         }
-        
         informaciok();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_tankolasActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        if(auto.getPotkerek() == 0){
+    private void kerekcsereActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kerekcsereActionPerformed
+        if(autok[index].getPotkerek() == 0){
             JOptionPane.showMessageDialog(rootPane, "Nincs pótkerék");
         }else{
-            auto.kerekCsere();
+            autok[index].kerekCsere();
         }  
         informaciok();
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_kerekcsereActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-if(auto.isDefekt()){
+    private void megyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_megyActionPerformed
+        if(autok[index].isDefekt()){
             JOptionPane.showMessageDialog(rootPane, "Defektes a kerék");
-        } else if(!auto.isUzemanyag()){
+        } else if(!autok[index].isUzemanyag()){
                JOptionPane.showMessageDialog(rootPane, "Nincs üzemanyag");
-        }else{
-            auto.megy();
+        }else if(!autok[index].isBeinditva()){
+                JOptionPane.showMessageDialog(rootPane, "Nincs beindítva");
+        }
+        else{
+            autok[index].megy();
             informaciok();
         }
-    }//GEN-LAST:event_jButton5ActionPerformed
+        
+    }//GEN-LAST:event_megyActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        if(auto.isDefekt()){
+        if(autok[index].isDefekt()){
             JOptionPane.showMessageDialog(rootPane, "Defektes a kerék");
-        } else if(!auto.isUzemanyag()){
+        } else if(!autok[index].isUzemanyag()){
                JOptionPane.showMessageDialog(rootPane, "Nincs üzemanyag");
         }else{
-            auto.megyEselyDefektre();
+            autok[index].megyEselyDefektre();
             informaciok();
         }
         
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void btnFelvitelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFelvitelActionPerformed
+    int potkerek = Integer.parseInt(txtPotkerek.getText());
+    //double esely = Double.valueOf(txtEsely.getText());
+    boolean uzemanyag = chbUzemanyag.isSelected();
+    boolean beinditva = chbBeinditva.isSelected();
+    autok[index] = new Auto(uzemanyag, beinditva, potkerek);
+    informaciok();
+    }//GEN-LAST:event_btnFelvitelActionPerformed
+
+    private void cmbAutokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbAutokActionPerformed
+    index = cmbAutok.getSelectedIndex();
+    }//GEN-LAST:event_cmbAutokActionPerformed
 
     /**
      * @param args the command line arguments
@@ -244,17 +429,32 @@ if(auto.isDefekt()){
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton beindit;
     private javax.swing.JLabel beinditL;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton btnFelvitel;
+    private javax.swing.JCheckBox chbBeinditva;
+    private javax.swing.JCheckBox chbUzemanyag;
+    private javax.swing.JComboBox<String> cmbAutok;
+    private javax.swing.JLabel defektL;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JButton kerekcsere;
+    private javax.swing.JButton leallit;
+    private javax.swing.JButton megy;
+    private javax.swing.JPanel megyDefekt;
     private javax.swing.JLabel potkerekekL;
+    private javax.swing.JButton tankolas;
+    private javax.swing.JTextField txtEsely;
+    private javax.swing.JTextField txtPotkerek;
+    private javax.swing.ButtonGroup uzemanyag;
     private javax.swing.JLabel uzemanyagL;
     // End of variables declaration//GEN-END:variables
 }
